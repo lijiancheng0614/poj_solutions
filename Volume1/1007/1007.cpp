@@ -5,7 +5,7 @@
 using namespace std;
 typedef pair<int, string> pis;
 
-int getInversion(string s)
+int get_inversion(string s)
 {
     int ans = 0, a = 0, c = 0, g = 0;
     for (int i = s.length() - 1; i >= 0; --i)
@@ -39,7 +39,7 @@ void solve()
     {
         string s;
         cin >> s;
-        a.push_back(pis(getInversion(s), s));
+        a.push_back(pis(get_inversion(s), s));
     }
     sort(a.begin(), a.end());
     for (int i = 0; i < m; ++i)

@@ -10,14 +10,14 @@ class Image : vector<pii>
     friend ostream& operator<<(ostream &os, Image &image);
 public:
     Image(int width = 0) : width(width), total(0) {}
-    void setTotal(int _total)
+    void set_total(int _total)
     {
         total = _total;
     }
     Image detect_edge()
     {
         Image image_output(width);
-        image_output.setTotal(total);
+        image_output.set_total(total);
         for (int i = 0; i < size(); ++i)
         {
             int pos = (*this)[i].first;
@@ -73,7 +73,7 @@ istream& operator>>(istream &is, Image &image)
         image.push_back(pii(total, value));
         total += length;
     }
-    image.setTotal(total);
+    image.set_total(total);
     return is;
 }
 

@@ -3,7 +3,7 @@
 #include <map>
 using namespace std;
 
-int convert2Tel(string s)
+int convert_to_tel(string s)
 {
     int t = 0;
     for (int i = 0; i < s.length(); ++i)
@@ -23,7 +23,7 @@ void solve()
     {
         string s;
         cin >> s;
-        ++h[convert2Tel(s)];
+        ++h[convert_to_tel(s)];
     }
     cout.fill('0');
     bool flag = true;
