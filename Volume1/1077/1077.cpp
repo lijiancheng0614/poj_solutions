@@ -6,12 +6,9 @@
 using namespace std;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
-const string direction = "ulrd";
-const int moves[][4] = {
-    { -1, -1, 1, 3}, { -1, 0, 2, 4}, { -1, 1, -1, 5},
-    { 0, -1, 4, 6}, { 1, 3, 5, 7}, { 2, 4, -1, 8},
-    { 3, -1, 7, -1}, { 4, 6, 8, -1}, { 5, 7, -1, -1}
-};
+const string direction = "dlru";
+const int dx[4] = {1, 0, 0, -1};
+const int dy[4] = {0, -1, 1, 0};
 class Solution
 {
 public:
@@ -59,9 +56,13 @@ private:
             int d = move_next[head.second] & 15;
             for (int k = 0; k < 4; ++k)
             {
-                int j = moves[i][k];
-                if (~j && d + k != 3)
+                if (k + d == 3)
+                    continue;
+                int x = i / 3 + dx[k];
+                int y = i % 3 + dy[k];
+                if (x >= 0 && x < 3 && y >= 0 && y < 3)
                 {
+                    int j = x * 3 + y;
                     state = head.first + update_state(get_state(head.first, j), i, j);
                     c = cantor(state);
                     if (!move_next[c])
